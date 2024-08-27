@@ -5,7 +5,7 @@ import '../assets/styles/globals.css'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'Quick AI',
+  title: 'Core AI',
   description:
     'The chatbot developed with VercelSDK is the perfect solution for improving customer service and simplifying processes, 24 hours a day, 7 days a week.',
   creator: 'Rodrigo Silva',

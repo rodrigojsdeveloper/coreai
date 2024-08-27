@@ -23,7 +23,7 @@ export const Chat = () => {
   return (
     <Card className="w-full max-w-[440px] animate-enter border-2">
       <CardHeader>
-        <CardTitle>Quick AI</CardTitle>
+        <CardTitle>Core AI</CardTitle>
         <CardDescription>
           Using Vercel SDK to create a chat bot.
         </CardDescription>
@@ -34,9 +34,10 @@ export const Chat = () => {
             return (
               <div key={message.id} className="mb-4 flex gap-3 text-sm">
                 {message.role === 'user' && (
-                  <Avatar className="min-w-7">
-                    <AvatarFallback>RS</AvatarFallback>
-                    <AvatarImage src={AvatarAI.src} />
+                  <Avatar className="flex h-8 min-w-8 items-center justify-center rounded-full bg-zinc-50">
+                    <AvatarFallback className="text-lg text-black">
+                      R
+                    </AvatarFallback>
                   </Avatar>
                 )}
                 {message.role === 'assistant' && (
@@ -47,7 +48,7 @@ export const Chat = () => {
                 )}
                 <p className="leading-relaxed">
                   <span className="block font-bold">
-                    {message.role === 'user' ? 'Human' : 'AI'}:
+                    {message.role === 'user' ? 'User' : 'AI'}:
                   </span>
                   <span className="text-muted-foreground">
                     {message.content}
