@@ -21,7 +21,7 @@ export const Chat = () => {
   })
 
   return (
-    <Card className="animate-enter w-full max-w-[440px] border-2">
+    <Card className="w-full max-w-[440px] animate-enter border-2">
       <CardHeader>
         <CardTitle>Quick AI</CardTitle>
         <CardDescription>
