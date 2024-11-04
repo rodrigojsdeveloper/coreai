@@ -15,6 +15,7 @@ import { Input } from '@/components/ui/input'
 import { Avatar, AvatarFallback, AvatarImage } from '@radix-ui/react-avatar'
 import AvatarAI from '@/assets/avatar-ai.svg'
 import { ScrollArea } from '@/components/ui/scroll-area'
+import { marked } from 'marked'
 
 export const Chat = () => {
   const {
@@ -65,11 +66,11 @@ export const Chat = () => {
       <CardContent>
         <ScrollArea className="h-[600px] w-full pr-4">
           {messages.map((message) => (
-            <div key={message.id} className="mb-4 flex gap-3 text-sm">
+            <div key={message.id} className="mb-6 flex gap-3 text-sm">
               {message.role === 'user' && (
                 <Avatar className="flex h-8 min-w-8 items-center justify-center rounded-full bg-zinc-50">
                   <AvatarFallback className="text-lg text-black">
-                    U
+                    C
                   </AvatarFallback>
                 </Avatar>
               )}
@@ -79,11 +80,11 @@ export const Chat = () => {
                   <AvatarImage src={AvatarAI.src} />
                 </Avatar>
               )}
-              <p className="leading-relaxed">
-                <span className="block font-bold">
-                  {message.role === 'user' ? 'User' : 'AI'}:
-                </span>
-                <span className="text-muted-foreground">{message.content}</span>
+              <p className="flex flex-row items-center leading-relaxed">
+                <span
+                  className="text-[#e3e3e3]"
+                  dangerouslySetInnerHTML={{ __html: marked(message.content) }}
+                />
               </p>
             </div>
           ))}
