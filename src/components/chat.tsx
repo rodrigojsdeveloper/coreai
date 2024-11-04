@@ -60,7 +60,7 @@ export const Chat = () => {
       <CardHeader>
         <CardTitle>Core AI</CardTitle>
         <CardDescription>
-          Using Vercel SDK to create a chat bot.
+          Using API Gemini to create a chat bot.
         </CardDescription>
       </CardHeader>
       <CardContent>
@@ -82,7 +82,7 @@ export const Chat = () => {
               )}
               <p className="flex flex-row items-center leading-relaxed">
                 <span
-                  className="text-[#e3e3e3]"
+                  className="custom-link text-[#e3e3e3]"
                   dangerouslySetInnerHTML={{ __html: marked(message.content) }}
                 />
               </p>

@@ -44,4 +44,8 @@
   :is(img, form) {
     @apply select-none;
   }
+
+  .custom-link a {
+    @apply text-[#a8c7fa] underline hover:no-underline
+  }
 }
