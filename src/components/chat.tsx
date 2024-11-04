@@ -1,5 +1,6 @@
 'use client'
 
+import { useEffect } from 'react'
 import { useChat } from 'ai/react'
 import { Button } from '@/components/ui/button'
 import {
@@ -16,9 +17,42 @@ import AvatarAI from '@/assets/avatar-ai.svg'
 import { ScrollArea } from '@/components/ui/scroll-area'
 
 export const Chat = () => {
-  const { messages, input, handleInputChange, handleSubmit } = useChat({
+  const {
+    messages,
+    input,
+    handleInputChange,
+    handleSubmit,
+    setMessages,
+    setInput,
+  } = useChat({
     api: '/api/chat',
+    onResponse: async (response) => {
+      try {
+        const jsonResponse = await response.json()
+        if (jsonResponse && jsonResponse.content) {
+          setMessages((prevMessages) => [
+            ...prevMessages,
+            {
+              id: `ai-${Date.now()}`,
+              role: 'assistant',
+              content: jsonResponse.content,
+            },
+          ])
+        }
+      } catch (error) {
+        console.error('Error parsing response:', error)
+      }
+    },
   })
+
+  useEffect(() => {
+    if (messages.length > 0) {
+      const lastMessage = messages[messages.length - 1]
+      if (lastMessage.role === 'user') {
+        setInput('')
+      }
+    }
+  }, [messages, setInput])
 
   return (
     <Card className="w-full max-w-[440px] animate-enter border-2">
@@ -30,33 +64,29 @@ export const Chat = () => {
       </CardHeader>
       <CardContent>
         <ScrollArea className="h-[600px] w-full pr-4">
-          {messages.map((message) => {
-            return (
-              <div key={message.id} className="mb-4 flex gap-3 text-sm">
-                {message.role === 'user' && (
-                  <Avatar className="flex h-8 min-w-8 items-center justify-center rounded-full bg-zinc-50">
-                    <AvatarFallback className="text-lg text-black">
-                      R
-                    </AvatarFallback>
-                  </Avatar>
-                )}
-                {message.role === 'assistant' && (
-                  <Avatar className="min-w-7">
-                    <AvatarFallback>AI</AvatarFallback>
-                    <AvatarImage src={AvatarAI.src} />
-                  </Avatar>
-                )}
-                <p className="leading-relaxed">
-                  <span className="block font-bold">
-                    {message.role === 'user' ? 'User' : 'AI'}:
-                  </span>
-                  <span className="text-muted-foreground">
-                    {message.content}
-                  </span>
-                </p>
-              </div>
-            )
-          })}
+          {messages.map((message) => (
+            <div key={message.id} className="mb-4 flex gap-3 text-sm">
+              {message.role === 'user' && (
+                <Avatar className="flex h-8 min-w-8 items-center justify-center rounded-full bg-zinc-50">
+                  <AvatarFallback className="text-lg text-black">
+                    R
+                  </AvatarFallback>
+                </Avatar>
+              )}
+              {message.role === 'assistant' && (
+                <Avatar className="min-w-7">
+                  <AvatarFallback>AI</AvatarFallback>
+                  <AvatarImage src={AvatarAI.src} />
+                </Avatar>
+              )}
+              <p className="leading-relaxed">
+                <span className="block font-bold">
+                  {message.role === 'user' ? 'User' : 'AI'}:
+                </span>
+                <span className="text-muted-foreground">{message.content}</span>
+              </p>
+            </div>
+          ))}
         </ScrollArea>
       </CardContent>
       <CardFooter>
