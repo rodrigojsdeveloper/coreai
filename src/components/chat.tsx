@@ -69,7 +69,7 @@ export const Chat = () => {
               {message.role === 'user' && (
                 <Avatar className="flex h-8 min-w-8 items-center justify-center rounded-full bg-zinc-50">
                   <AvatarFallback className="text-lg text-black">
-                    R
+                    U
                   </AvatarFallback>
                 </Avatar>
               )}
