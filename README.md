@@ -1,36 +1,48 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+<div align="center">
+  <h1>
+    Core IA
+  </h1>
 
-## Getting Started
+  <p>Core AI, um chatbot projetado para integrar e consumir a API Gemini.</p>
+</div>
+<br/>
 
-First, run the development server:
+## Clonando o Repositório
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+Yocê pode clonar este repositório usando o seguinte comando:
+
+```
+git clone https://github.com/rodrigojsdeveloper/coreai.git
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Gerenciador de Pacotes
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Este projeto usa o NPM como seu gerenciador de pacotes. Certifique-se de que ele está instalado antes de continuar.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## Instalação de Dependências
 
-## Learn More
+Para instalar as dependências do projeto, abra o terminal na raiz e execute o seguinte comando:
 
-To learn more about Next.js, take a look at the following resources:
+```
+npm install
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Iniciando o Core IA
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+Para iniciar o projeto, execute o seguinte comando no terminal:
 
-## Deploy on Vercel
+```
+npm run dev
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### Acessando o Core IA no Vercel
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Você pode acessar o chatbot Core IA no seguinte link:
+
+```
+https://coreai.vercel.app
+```
+
+<br/>
+  <p align="center">Desenvolvido por <a href="https://www.linkedin.com/in/rodrigojsdeveloper">Rodrigo Silva</a>
+</p>
